@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>URL Shortener</h1>
+  <div class="container">
+    <form>
+      <h2 id="title">Shorten URL!</h2>
+      <div class="form-group" id="inputoriginalurl">
+        <label for="originalurl">Original URL</label>
+        <input type="text" id="originalurl" placeholder="Enter Original URL">
+      </div>
+      <div class="form-group" id="inputnote">
+        <label for="note">Note</label>
+        <input type="text" id="note" placeholder="Enter notes">
+      </div>
+      <div class="form-group">
+        <center><button type="button" id="shortenbtn" onclick="shortenUrl()">Shorten</button></center>
+      </div>
+      <div class="shortened-url" id="shortenedurl">
+        <h4 id="shorturltext">Shortened URL:</h4>
+      </div>
+    </div>
+    <div class="container">
+    </form>
+    <form>
+    <div class="form-group" id="searchbar">
+      <label for="search">Search:</label>
+      <input type="text" id="search" placeholder="Enter a keyword">
+      <button type="button" id="search" onclick="searchUrl()">Search</button>
+  </div>
+</form>
+</div>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
