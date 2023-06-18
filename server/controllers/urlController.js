@@ -6,9 +6,11 @@ async function generateShortURL(req, res) {
     const originalURL = req.body.originalURL;
     const notes = req.body.notes;
     try {
-        const shortURL = shortid.generate();
+        const shortID = shortid.generate();
+        const shortURL = 'http://arshurl/' + shortID;
         await URL.create({ shortURL, originalURL, notes });
-        res.json({ data: shortURL });
+        res.send({ shortURL: shortURL });
+        console.log(shortURL);
     }
     catch (error) {
         res.status(500).json({ error: 'Internal server error' });
@@ -16,10 +18,13 @@ async function generateShortURL(req, res) {
 }
 
 async function redirectURL(req, res) {
-    const shortURL = req.params.shortURL;
+    const shortID = req.params.shortID;
+    const shortURL = "http://localhost:5000/url/" + shortID;
+    //console.log(shortURL);
     try {
         const url = await URL.findOne({ shortURL });
         if (url) {
+            res.send({ originalURL: url.originalURL });
             res.redirect(url.originalURL);
         }
         else {
@@ -31,17 +36,6 @@ async function redirectURL(req, res) {
     }
 }
 
-async function searchURL(req, res) {
-    try {
-        let result = await collection.aggregate([{
-
-        }])
-    }
-    catch (err) {
-        res.json({
-            message: err.message
-        });
-    }
-}
+async function searchURL() { }
 
 module.exports = { generateShortURL, redirectURL, searchURL };

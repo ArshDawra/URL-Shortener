@@ -3,7 +3,7 @@ const { generateShortURL, redirectURL, searchURL } = require('../controllers/url
 const router = express.Router();
 
 router.post('/shorten', generateShortURL);
-router.get('/:shortURL', redirectURL);
+router.get('/:shortID', redirectURL);
 router.post('/searchnote', searchURL);
 
 module.exports = router;

@@ -1,17 +1,15 @@
-
 function signup() {
     console.log("yes");
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
+    const userName = document.getElementById('userName').value;
+    const userEmail = document.getElementById('userEmail').value;
     const password = document.getElementById('password').value;
-    const confirmpassword = document.getElementById('confirmpassword').value;
-    console.log(name);
+    const confirmPassword = document.getElementById('confirmPassword').value;
 
     const user = {
-        name,
-        email,
+        userName,
+        userEmail,
         password,
-        confirmpassword
+        confirmPassword
     };
 
     fetch('http://localhost:5000/signUp', {
@@ -23,23 +21,23 @@ function signup() {
     })
         .then(response => {
             if (response.ok) {
-                window.location.href = '/dashboard.html';
-            } else {
+                window.location.href = './dashboard.html';
+            }
+            else {
                 throw new Error('Error signing up');
             }
         })
         .catch(error => {
             console.error('Error signing up:', error);
         });
-
 }
 
 function login() {
-    const email = document.getElementById('email').value;
+    const userEmail = document.getElementById('userEmail').value;
     const password = document.getElementById('password').value;
 
     const user = {
-        email,
+        userEmail,
         password
     };
 
@@ -52,9 +50,7 @@ function login() {
     })
         .then(response => {
             if (response.ok) {
-                window.location.href = '/dashboard.html';
-            } else {
-                throw new Error('Error logging in');
+                window.location.href = './dashboard.html';
             }
         })
         .catch(error => {
@@ -63,10 +59,10 @@ function login() {
 }
 
 function shortenUrl() {
-    const originalUrl = document.getElementById('originalurl').value;
-    const notes = document.getElementById('note').value;
+    const originalURL = document.getElementById('originalURL').value;
+    const notes = document.getElementById('notes').value;
     const url = {
-        originalUrl,
+        originalURL,
         notes
     };
 
@@ -87,9 +83,40 @@ function shortenUrl() {
         .then(data => {
             const shortenedUrl = data.shortURL;
             const shortenedUrlDiv = document.getElementById('shortenedurl');
-            shortenedUrlDiv.textContent = `Shortened URL: http://localhost:5000/url/:${shortenedUrl}`;
+            //console.log(shortenedUrl);
+            shortenedUrlDiv.textContent = `Shortened URL: ${shortenedUrl}`;
+            const redirectbtn = document.getElementById('redirect');
+            redirectbtn.style.display = "block";
         })
         .catch(error => {
             console.error('Error:', error);
         });
+}
+
+function redirectURL() {
+    console.log("hey");
+    const shortURL = document.getElementById('shortenedurl').textContent;
+    console.log(encodeURIComponent(shortURL));
+
+    fetch(`http://localhost:5000/redirect/${encodeURIComponent(shortURL)}`)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else if (response.status === 404) {
+                throw new Error('URL not found');
+            } else {
+                throw new Error('Internal server error');
+            }
+        })
+        .then(data => {
+            console.log(data.originalURL);
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+function searchUrl() {
+
 }

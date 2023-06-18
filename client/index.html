@@ -9,15 +9,15 @@
 <body>
   <h1>URL Shortener</h1>
   <div class="container">
-    <form>
+    <div id="entireform">
       <h2 id="title">Signup</h2>
       <div class="form-group" id="inputname">
         <label for="name">Username</label>
-        <input type="text" id="name" name="name" placeholder="Your username">
+        <input type="text" id="userName" name="name" placeholder="Your username">
       </div>
       <div class="form-group" id="inputemail">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Your email">
+        <input type="email" id="userEmail" name="email" placeholder="Your email">
       </div>
       <div class="form-group" id="inputpassword">
         <label for="password">Password</label>
@@ -25,14 +25,14 @@
       </div>
       <div class="form-group" id="inputconfirmpassword">
         <label for="confirmpassword">Confirm Password</label>
-        <input type="confirmpassword" id="confirmpassword" name="confirmpassword" placeholder="Confirm password">
+        <input type="confirmpassword" id="confirmPassword" name="confirmpassword" placeholder="Confirm password">
       </div>
       <div class="form-group">
         <center><button type="signup" id="signupbtn" onclick="signup()">Sign up</button></center>
-        <center> <a href="logIn.html"><button type="login" id="gotologinbtn">Sign in</button></a></center>
       </div>
-    </form>
+    </div>
   </div>
+  <center> <a href="logIn.html"><button type="direct" id="gotologinbtn">Sign in</button></a></center>
   <script src="script.js"></script>
 </body>
 </html>
