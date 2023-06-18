@@ -61,10 +61,6 @@ input[type="confirmpassword"] {
     border-radius: 0.1875rem;
 }
 
-#redirect {
-    display: none;
-}
-
 button[type="direct"] {
     margin-top: 2rem;
     width: 9rem;

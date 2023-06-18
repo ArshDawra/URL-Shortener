@@ -83,39 +83,14 @@ function shortenUrl() {
         .then(data => {
             const shortenedUrl = data.shortURL;
             const shortenedUrlDiv = document.getElementById('shortenedurl');
-            //console.log(shortenedUrl);
-            shortenedUrlDiv.textContent = `Shortened URL: ${shortenedUrl}`;
-            const redirectbtn = document.getElementById('redirect');
-            redirectbtn.style.display = "block";
+            shortenedUrlDiv.innerHTML = '<h4 id="shorturltext">Shortened URL:</h4> <a href="http://localhost:5000/url/' + shortenedUrl.substring(15) + '">Redirect</a>';
         })
         .catch(error => {
             console.error('Error:', error);
         });
 }
 
-function redirectURL() {
-    console.log("hey");
-    const shortURL = document.getElementById('shortenedurl').textContent;
-    console.log(encodeURIComponent(shortURL));
 
-    fetch(`http://localhost:5000/redirect/${encodeURIComponent(shortURL)}`)
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else if (response.status === 404) {
-                throw new Error('URL not found');
-            } else {
-                throw new Error('Internal server error');
-            }
-        })
-        .then(data => {
-            console.log(data.originalURL);
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-}
 
 function searchUrl() {
 

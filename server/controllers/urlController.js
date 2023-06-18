@@ -19,12 +19,12 @@ async function generateShortURL(req, res) {
 
 async function redirectURL(req, res) {
     const shortID = req.params.shortID;
-    const shortURL = "http://localhost:5000/url/" + shortID;
+    const shortURL = "http://arshurl/" + shortID;
     //console.log(shortURL);
     try {
         const url = await URL.findOne({ shortURL });
         if (url) {
-            res.send({ originalURL: url.originalURL });
+            //res.send({ originalURL: url.originalURL });
             res.redirect(url.originalURL);
         }
         else {
