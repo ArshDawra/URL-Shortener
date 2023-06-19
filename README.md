@@ -57,6 +57,7 @@ To run this project, you will need to add the following environment variables to
 - URL Shortener
 - Save URLs along with Notes or Description
 - Search Functionality (Search desired URL information)
+- Keeps track of number of visits/clicks on a site using the shortURL
 
 
 
@@ -88,7 +89,7 @@ Dashboard and URL Shortening:
    - The backend stores the original URL, short url, and accompanying notes in the database, along with the timestamp of creation.
 
 Redirection and Search Functionality:
-   - When a user clicks on a shortened URL, the frontend captures the short code.
+   - When a user clicks on a shortened URL, the frontend captures the short code and increments the number of visits/clicks on that particular site.
    - The frontend sends a Fetch GET request to the backend with the short code.
    - The backend retrieves the original URL associated with the short code from the database.
    - The backend redirects the user to the original URL, which brings them to the desired destination.
@@ -98,7 +99,7 @@ Search Functionality:
    - When the user submits the search query, a Fetch request is sent to the backend.
    - The backend searches the database for any records where the keyword matches the notes, original URL, or short URL fields.
    - The backend returns the search results as a response to the frontend.
-   - The frontend displays the search results, including the original URL, short URL, and accompanying notes.
+   - The frontend displays the search results, including the original URL, short URL, accompanying notes, and number of clicks on that site.
 
 Throughout the process, the frontend provides a responsive and user-friendly interface, while the backend handles the authentication, URL shortening, data storage, search functionality, and redirection.
 
