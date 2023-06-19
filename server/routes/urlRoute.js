@@ -4,6 +4,5 @@ const router = express.Router();
 
 router.post('/shorten', generateShortURL);
 router.get('/:shortID', redirectURL);
-router.post('/searchnote', searchURL);
 
 module.exports = router;

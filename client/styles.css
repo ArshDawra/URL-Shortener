@@ -28,12 +28,25 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 14rem;
+    height: 16rem;
     width: 25rem;
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.1);
     padding: 0.25rem;
     border-radius: 0.3125rem;
+    margin-bottom: 3rem;
+}
+
+.container3 {
+    display: flex;
+    flex-direction: column;
+    height: 10rem;
+    width: 30rem;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.25rem;
+    border-radius: 0.3125rem;
+    margin-bottom: 3rem;
 }
 
 h2 {

@@ -36,6 +36,24 @@ async function redirectURL(req, res) {
     }
 }
 
-async function searchURL() { }
+async function searchURL(req, res) {
+    try {
+        const keyword = req.params.keyword;
+        console.log(keyword);
+        const search1 = await URL.find({ notes: keyword }).limit(5);
+        if (search1 == null) {
+            const search2 = await URL.find({ shortURL: keyword }).limit(5);
+            if (search2 == null) {
+                const search3 = await URL.find({ originalURL: keyword }).limit(5);
+                res.send(search3);
+            }
+            else res.send(search2);
+        }
+        else res.send(search1);
+    }
+    catch (error) {
+        res.status(500).send({ message: "can't search" });
+    }
+}
 
 module.exports = { generateShortURL, redirectURL, searchURL };

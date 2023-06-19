@@ -4,6 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const urlRoute = require('./routes/urlRoute');
 const userRoute = require('./routes/userRoutes');
+const searchRoute = require('./routes/searchRoute');
 const app = express();
 const PORT = 5000;
 require('dotenv').config();
@@ -14,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', userRoute);
 app.use('/url', urlRoute);
+app.use('/', searchRoute);
 
 mongoose.connect(process.env.DB_LINK).then(() => console.log("MongoDB connected successfully"))
     .catch((err) => console.log(`MongoDB connection failed: ${err}`));
