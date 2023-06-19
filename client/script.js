@@ -83,7 +83,7 @@ function shortenUrl() {
         .then(data => {
             const shortenedUrl = data.shortURL;
             const shortenedUrlDiv = document.getElementById('shortenedurl');
-            shortenedUrlDiv.innerHTML = '<h4 id="shorturltext">Shortened URL: ' + shortenedUrl + '</h4> <a href="http://localhost:5000/url/' + shortenedUrl.substring(15) + '">Redirect</a>';
+            shortenedUrlDiv.innerHTML = '<h4 id="shorturltext">Shortened URL: ' + shortenedUrl + '</h4> <a href="http://localhost:5000/url/' + shortenedUrl.substring(15) + '"style="color: green;">Redirect</a>';
         })
         .catch(error => {
             console.error('Error:', error);
@@ -104,14 +104,18 @@ function searchUrl() {
                 originalURL.innerHTML = "Original URL:  " + obj.originalURL + "  " + "<a href=" + `${obj.originalURL}` + `id="link" target="_blank" style="color: green;">Click Me</a>`;
 
                 var shortURL = document.createElement("h5");
-                shortURL.innerHTML = "Shortened URL:  " + obj.shortURL + "  " + "<a href=" + `${obj.shortURL}` + `id="link" target="_blank" style="color: green;">Click Me</a>`;
+                shortURL.innerHTML = "Shortened URL:  " + obj.shortURL + "  " + '<a href="http://localhost:5000/url/' + obj.shortURL.substring(15) + '"style="color: green;">Redirect</a>';
 
                 var notes = document.createElement("h5");
                 notes.textContent = `Notes: ${obj.notes}`;
 
+                var clicks = document.createElement("h5");
+                clicks.textContent = `Number of Clicks: ${obj.clicks}`;
+
                 container.appendChild(originalURL);
                 container.appendChild(shortURL);
                 container.appendChild(notes);
+                container.appendChild(clicks);
 
                 document.body.appendChild(container);
             });

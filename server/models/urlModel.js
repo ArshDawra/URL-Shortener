@@ -17,6 +17,10 @@ const urlSchema = new mongoose.Schema({
     },
     notes: {
         type: String
+    },
+    clicks: {
+        type: Number,
+        default: 0
     }
 });
 

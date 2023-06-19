@@ -25,6 +25,9 @@ async function redirectURL(req, res) {
         const url = await URL.findOne({ shortURL });
         if (url) {
             //res.send({ originalURL: url.originalURL });
+            url.clicks++;
+            url.save();
+            console.log(url.clicks);
             res.redirect(url.originalURL);
         }
         else {
