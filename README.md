@@ -5,7 +5,7 @@ The URL Shortener project aims to provide a service that takes long URLs and con
 
 
 ## Demo
-
+[Demo Video Link](https://youtu.be/n_0rXS61uNY)
 
 ## Tech Stacks 🚀
 
@@ -104,6 +104,65 @@ Search Functionality:
 Throughout the process, the frontend provides a responsive and user-friendly interface, while the backend handles the authentication, URL shortening, data storage, search functionality, and redirection.
 
 
+## API Reference
+
+#### Sign Up User
+
+```http
+  POST /signUp
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `userName`      | `string` | **Required**|
+| `userEmail`      | `string` | **Required**, **Unique**|
+| `password`      | `string` | **Required**|
+| `confirmPassword`      | `string` | **Required**|
+
+
+#### Log In User
+
+```http
+  POST /login
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `userEmail`      | `string` | **Required**, **Unique**|
+| `password`      | `string` | **Required**|
+
+#### Shorten URL
+```http
+  POST /url/shorten
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `shortURL`      | `string` | **Required**, **Unique**|
+| `originalURL`      | `string` | **Required**, **Unique**|
+| `createdAt`      | `date` | default : Date.now|
+| `notes`      | `string` | **Required**|
+| `clicks`      | `number` | default : 0|
+
+A unique shortURL is made for every originalURL in the backend itself and stored in db.
+
+#### Redirect to original URL
+```http
+  GET /url/:shortID
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `clicks`      | `number` | Clicks/Visits on that site|
+
+On every redirection, the number of clicks is incremented by 1.
+
+#### Search
+```http
+  GET /searchURL/:keyword
+```
+The keyword is searched across the fields - notes, originalURL, shortURL and the array of documents containing that keyword is returned.
+
 ## Lessons Learned
 
 Key takeaways include implementing user registration and login, securing user passwords with bcrypt, interacting with MongoDB, handling frontend and backend communication using Fetch, creating a responsive frontend, generating unique short codes for URLs, storing and retrieving data from the database, and implementing search functionality. The project enhanced skills in full-stack development, security, error handling, database management, and user experience optimization.
@@ -115,6 +174,7 @@ Key takeaways include implementing user registration and login, securing user pa
  - [Express.js Documentation](https://expressjs.com/)
  - [MongoDB Atlas Documentation](https://www.mongodb.com/docs/atlas/)
  - [Mongoose Documentation](https://mongoosejs.com/docs/)
+ - Along with these official documentations, the resources provided by ACM were very instrumental
 
 
 
